@@ -26,7 +26,7 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     private int messageCounter = 0;                         // Счётчик пришедших сообщений
 
     // Полученные данные
-    [SerializeField] VariableStorage chatMessage;            // Объект класса ChatMessage для управления данными подписчика в чате
+    [SerializeField] VariableStorage chatMessage;           // Объект класса ChatMessage для управления данными подписчика в чате
    
     
 
@@ -68,7 +68,8 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     
     void ConnectChat()
     {
-        twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);       // Заполняем данные для подключения
+        twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);                  
+        // Заполняем данные для подключения
         reader = new StreamReader(twitchClient.GetStream());                       // Создаём для передачи инфы Twitch'у reader и writer
         writer = new StreamWriter(twitchClient.GetStream());                       
         
