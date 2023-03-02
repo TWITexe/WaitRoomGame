@@ -10,11 +10,12 @@ public class ActionContoller : MonoBehaviour
     // Телевизор
     [SerializeField] GameObject TV;
     Animator tvAnim;                                                        // Аниматор TV
-    // Кот
+    // Кот (Главный герой)
     [SerializeField] GameObject Cat;
     Animator catsAnim;                                                      // Аниматор кота
     private Vector3 _startPos;                                              // Начальная точка кота при движении
     private Vector3 _endPos;                                                // Конечная точка кота при движении
+    private bool catIsReady, catInHome,catOnChair = false;        
     // Кошачий дом
     [SerializeField] GameObject CatsHome;                                            
 
@@ -24,10 +25,13 @@ public class ActionContoller : MonoBehaviour
         catsAnim = Cat.GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Debug.Log("message = " + chatMessage.Message);
         Debug.Log("name = " + chatMessage.ChatName);
+        if (_endPos == _startPos)
+            Cat.GetComponent<SpriteRenderer>().flipX = false;
+        
         if (chatMessage.Message.ToLower().IndexOf("!tv") > -1)               // Если есть !tv в команде, проверяет дальше, если нет, не проходится по остальным if'ам
         {
             switch (chatMessage.Message.ToLower())
@@ -53,23 +57,69 @@ public class ActionContoller : MonoBehaviour
             }
         }
 
-        if (chatMessage.Message.ToLower().IndexOf("!cat") > -1)
+        if (chatMessage.Message.ToLower().LastIndexOf("!cat") > -1)
         {
             switch (chatMessage.Message.ToLower())
             {
+
                 case "!cathome":
-                    _startPos = new Vector3(Cat.transform.position.x, Cat.transform.position.y, 0);
-                    _endPos = new Vector3(-1.48f, -1.71f, 0);
-                    catsAnim.SetBool("isJump", true);
-                    Cat.transform.position = Vector3.MoveTowards (_startPos, _endPos, Time.deltaTime*2.5f);
-                    if (_startPos == _endPos)
+                    if (!catInHome)
                     {
-                        catsAnim.SetBool("isJump", false);
-                        Cat.SetActive(false);
-                        CatsHome.GetComponent<Animator>().SetBool("isHome", true);
+                        ReadyToStart();
+                        _startPos = new Vector3(Cat.transform.position.x, Cat.transform.position.y, 0);
+                        _endPos = new Vector3(-1.48f, -1.71f, 0);
+                        catsAnim.SetBool("isJump", true);
+                        Cat.transform.position = Vector3.MoveTowards(_startPos, _endPos, Time.deltaTime * 2.5f);
+                        if (_startPos == _endPos)
+                        {
+                            catsAnim.SetBool("isJump", false);
+                            Cat.SetActive(false);
+                            CatsHome.GetComponent<Animator>().SetBool("isHome", true);
+                            catInHome = true;
+                        }
                     }
                     break;
+                case "!catchair":
+                    if (!catInHome)
+                    {
+                        if (!catIsReady)
+                        {
+                            ReadyToStart();  
+                        }
+                        else if (catIsReady)
+                        {
+                            _startPos = new Vector3(Cat.transform.position.x, Cat.transform.position.y, 0);
+                            _endPos = new Vector3(3f, -1.3f, 0);
+                            catsAnim.SetBool("isJump", true);
+                            Cat.transform.position = Vector3.MoveTowards(_startPos, _endPos, Time.deltaTime * 2.5f);
+                            if (_startPos == _endPos)
+                            {
+                                catsAnim.SetBool("isJump", false);
+                                Cat.SetActive(false);
+                                CatsHome.GetComponent<Animator>().SetBool("isHome", true);
+                                catOnChair = true;
+                            }
+                        }
+                    }
+
+                    break;
+                    
             }
         }
     }
+    void ReadyToStart()             // Стартовая позиция перед всеми действиями
+    {
+        catInHome = false;
+        Debug.Log("go ready");
+        Cat.SetActive(true);
+        _startPos = new Vector3(Cat.transform.position.x, Cat.transform.position.y, 0);
+        _endPos = new Vector3(5.3f, -2f, 0);
+        Cat.GetComponent<SpriteRenderer>().flipX = true;
+        Cat.transform.position = Vector3.MoveTowards (_startPos, _endPos, Time.deltaTime*2.5f);
+        if (_endPos == _startPos)
+        {
+            catIsReady = true;
+        }
+    }
+    
 }
