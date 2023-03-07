@@ -55,7 +55,7 @@
      <Compile Include="Assets\Scripts\IConnectChat.cs" />
      <Compile Include="Assets\Scripts\TwitchChat.cs" />
      <Compile Include="Assets\Scripts\VariableStorage.cs" />
-     <Compile Include="Assets\Scripts\ActionContoller.cs" />
+     <Compile Include="Assets\Scripts\CatController.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/UnityProject/2020.3.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

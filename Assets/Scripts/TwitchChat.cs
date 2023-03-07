@@ -1,32 +1,34 @@
 ﻿using System.Net.Sockets;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Networking.PlayerConnection;
 using UnityEngine.UI;
 
 
 public class TwitchChat : MonoBehaviour, IConnectChat
 {
-    TcpClient twitchClient;                                 // Клиент твича для дальнейшей работы
+    // Клиент твича для дальнейшей работы
+    TcpClient twitchClient;                                 
     private StreamReader reader;                                    
     private StreamWriter writer;
     
     public Text textNickname;
     public Text textMessage;
-        
-    public string username;                                 // Имя пользователя, чей oauth будет использоваться
+    // Имя пользователя, чей oauth будет использоваться    
+    public string username;                                 
     
-    public string password;                                 // Oauth ключ с источника: twitchapps.com/tmi
-    public string channelName;                              // Ник человека на Twitch, с которого будет браться информация о чате.
+    // Oauth ключ с источника: twitchapps.com/tmi
+    public string password;                                 
+    // Ник человека на Twitch, с которого будет браться информация о чате.
+    public string channelName;                              
     
-    
-    private float reconnectTimer;                           // Используется для переподключения к серверу
+    // Используется для переподключения к серверу
+    private float reconnectTimer;                           
     private float reconnectAfter;
+    // Счётчик пришедших сообщений
+    private int messageCounter = 0;                         
 
-    private int messageCounter = 0;                         // Счётчик пришедших сообщений
-
-    // Полученные данные
-    [SerializeField] VariableStorage chatMessage;           // Объект класса ChatMessage для управления данными подписчика в чате
+    // Полученные данные | Объект класса ChatMessage для управления данными подписчика в чате
+    [SerializeField] VariableStorage chatMessage;
    
     
 
@@ -40,8 +42,8 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     
     void Update()
     {
-        
-        if (!twitchClient.Connected)                        // Проверяем Connect
+        // Проверяем Connect
+        if (!twitchClient.Connected)                        
         {
             print("Can't connect");
             Connect();
@@ -60,40 +62,37 @@ public class TwitchChat : MonoBehaviour, IConnectChat
 
         ReadChat();
     }
-
-    public void Connect() // *Обязательное поле по интерфейсу
-    {
-        ConnectChat();
-    }
     
-    void ConnectChat()
+    
+    public void Connect()
     {
         twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);                  
         // Заполняем данные для подключения
-        reader = new StreamReader(twitchClient.GetStream());                       // Создаём для передачи инфы Twitch'у reader и writer
+        // Создаём для передачи инфы Twitch'у reader и writer
+        reader = new StreamReader(twitchClient.GetStream());                       
         writer = new StreamWriter(twitchClient.GetStream());                       
         
         // Передаём данные Twitch'у 
         writer.WriteLine("PASS " + password);
         writer.WriteLine("NICK " + username);
-        writer.WriteLine("USER " + username + " 8 *:" + username);                 // Здесь используется особая форма записи.
+        // Здесь используется особая форма записи.
+        writer.WriteLine("USER " + username + " 8 *:" + username);                 
         writer.WriteLine("JOIN #" + channelName);
         writer.Flush();
         
         print("Connect");
     }
 
-    public void ReadChat()
+    private void ReadChat()
     {
         print("InReadChat");
         if (twitchClient.Available > 0)
         {
-            
-            chatMessage.Message = reader.ReadLine();                                // Получаем сообщение от подписчика сверху
-            
-            if ( chatMessage.Message.Contains("PRIVMSG"))                           // Проверяем, написано ли сообщение пользователем ( PRIVMSG ).
+            // Получаем сообщение от подписчика сверху
+            chatMessage.Message = reader.ReadLine();                                
+            // Проверяем, написано ли сообщение пользователем ( PRIVMSG ).
+            if ( chatMessage.Message.Contains("PRIVMSG"))                           
             {
-                //string chatName = chatMessage.chatName;                           // Получаем ник подписчика чата
                 // Получаем никнейм пользователя, написавшего сообщение
                 int splitPoint = chatMessage.Message.IndexOf("!", 1);
                 chatMessage.ChatName = chatMessage.Message.Substring(0, splitPoint);

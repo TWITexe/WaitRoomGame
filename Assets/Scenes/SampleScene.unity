@@ -390,17 +390,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &565092787 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2426645986021019751, guid: dcf3c3b0fb95fe245807cd813b08a75d, type: 3}
-  m_PrefabInstance: {fileID: 2426645986580869588}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &814957825
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,11 +419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170c03df7284ec4479547f09b476571d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageOnTV: {fileID: 842301790}
   chatMessage: {fileID: 1670109256}
-  TV: {fileID: 1502290617}
-  Cat: {fileID: 258827159}
-  CatsHome: {fileID: 1230856550}
+  cat: {fileID: 258827159}
+  tvAnim: {fileID: 1502290618}
+  catsAnim: {fileID: 258827160}
+  catsHome: {fileID: 1230856553}
 --- !u!4 &814957827
 Transform:
   m_ObjectHideFlags: 0
@@ -449,11 +438,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &842301790 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2426645985418238480, guid: dcf3c3b0fb95fe245807cd813b08a75d, type: 3}
-  m_PrefabInstance: {fileID: 2426645986580869588}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &925901000
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,10 +780,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff5300d4379e6d4e800d0a0db7d7129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textNickname: {fileID: 565092787}
-  textMessage: {fileID: 2077070721}
+  textNickname: {fileID: 0}
+  textMessage: {fileID: 0}
   username: twitexe
-  password: oauth:txnrobvym3a3jjc9yfyejgtzs1ub8n
+  password: oauth:9ol3owc20u0457vf3vd4lxd4zma7yr
   channelName: twitexe
   chatMessage: {fileID: 1670109256}
 --- !u!4 &1949231818
@@ -814,19 +798,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2077070721 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2426645984571958357, guid: dcf3c3b0fb95fe245807cd813b08a75d, type: 3}
-  m_PrefabInstance: {fileID: 2426645986580869588}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2426645986580869588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -848,7 +821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2426645985418238482, guid: dcf3c3b0fb95fe245807cd813b08a75d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2426645985418238482, guid: dcf3c3b0fb95fe245807cd813b08a75d, type: 3}
       propertyPath: m_LocalScale.x
