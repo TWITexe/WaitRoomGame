@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using System;
+using System.Net.Sockets;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,25 +43,31 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     
     void Update()
     {
-        // Проверяем Connect
-        if (!twitchClient.Connected)                        
+        
+        try
         {
-            print("Can't connect");
-            Connect();
-        }
+            // Проверяем Connect
+            if (!twitchClient.Connected)                        
+            {
+                print("Can't connect");
+                Connect();
+            }
+            if (twitchClient.Available == 0)
+            {
+                reconnectTimer += Time.deltaTime;
+            }
 
-        if (twitchClient.Available == 0)
+            if (twitchClient.Available == 0 && reconnectTimer >= reconnectAfter)
+            {
+                Connect();
+                reconnectTimer = 0.0f;
+            }
+            ReadChat();
+        }
+        catch (Exception e)
         {
-            reconnectTimer += Time.deltaTime;
+            Console.WriteLine("Exception = " + e);
         }
-
-        if (twitchClient.Available == 0 && reconnectTimer >= reconnectAfter)
-        {
-            Connect();
-            reconnectTimer = 0.0f;
-        }
-
-        ReadChat();
     }
     
     
