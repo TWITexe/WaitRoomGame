@@ -21,6 +21,7 @@ public class CatController : MonoBehaviour
     // Прошлая и текущая команды.
     private string lastCommand;
     private string nowCommand = "start";
+    // создаём экземпляр войса кота.
 
     private void Start()
     {
@@ -106,6 +107,11 @@ public class CatController : MonoBehaviour
                     break;
                     
             }
+        }
+
+        if (chatMessage.Message.ToLower().LastIndexOf("!meow") > -1 && nowCommand != lastCommand)
+        {
+            CatVoiceManager.catVoiceManager.CatMeows();
         }
     }
     private void ReadyToStart()                     // Стартовая позиция перед всеми действиями
