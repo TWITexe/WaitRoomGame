@@ -1,11 +1,14 @@
+using System.Timers;
 using UnityEngine;
 public class CatController : MonoBehaviour
 {
-    // [SerializeField] private GameObject messageOnTV;
+    [SerializeField] private GameObject timerObject;
+    //[SerializeField] private GameObject eventManager;
     // Скрипт банка сообщений в чате
     [SerializeField] private VariableStorage chatMessage;
     // Главный герой
     [SerializeField] private GameObject cat;
+    [SerializeField] private float catSpeed;
     private bool catReady = true;
     // Аниматор TV
     [SerializeField] private Animator tvAnim;
@@ -21,10 +24,12 @@ public class CatController : MonoBehaviour
     // Прошлая и текущая команды.
     private string lastCommand;
     private string nowCommand = "start";
-    // создаём экземпляр войса кота.
+    // создаём экземпляр класса таймер.
+    private TimerForChatСommands timerForChatСommands;
 
     private void Start()
     {
+        timerForChatСommands = timerObject.GetComponent<TimerForChatСommands>();
         _startPos = _defaultStartPos;
     }
 
@@ -38,8 +43,9 @@ public class CatController : MonoBehaviour
         Debug.Log("message = " + chatMessage.Message);
         Debug.Log("name = " + chatMessage.ChatName);
         // Если есть "!tv" в чате, проверяет дальше, если нет, не проходится по остальным if'ам
-        if (chatMessage.Message.ToLower().LastIndexOf("!tv") > -1)               
+        if (chatMessage.Message.ToLower().LastIndexOf("!tv") > -1 && !timerForChatСommands.TimerOn && catReady)               
         {
+            nowCommand = chatMessage.Message.ToLower();
             switch (chatMessage.Message.ToLower())
             {
                 case "!tv1":
@@ -73,7 +79,7 @@ public class CatController : MonoBehaviour
                     // Проверка на готовность кота к следующему действию, ( а так же, проверка не стоИт ли кот уже на нужной команде точке ).
                     if (_startPos != _endPos && catReady)
                     {
-                        CatLetsGo(new Vector3(-1.48f, -1.71f, 0), 2.7f);
+                        CatLetsGo(new Vector3(-1.48f, -1.71f, 0), catSpeed);
                         if (_startPos == _endPos)
                         {
                             catsAnim.SetBool("isJump", false);
@@ -82,7 +88,7 @@ public class CatController : MonoBehaviour
                         }
                     }
                     // Если сработала другая команда и кот не готов к ней, то ставим кота в готовность.
-                    else if (nowCommand != lastCommand || !catReady)
+                    else if (nowCommand != lastCommand || !catReady )
                     {
                         ReadyToStart();
                     }
@@ -92,7 +98,7 @@ public class CatController : MonoBehaviour
                     // Проверка на готовность кота к следующему действию, ( а так же, проверка не стоИт ли кот уже на нужной команде точке ).
                     if (_startPos != _endPos && catReady)
                     {
-                        CatLetsGo(new Vector3(3f, -1.3f, 0), 2.7f);
+                        CatLetsGo(new Vector3(3f, -1.3f, 0), catSpeed);
                         if (_startPos == _endPos)
                         {
                             catsAnim.SetBool("isJump", false);
@@ -107,22 +113,24 @@ public class CatController : MonoBehaviour
                     break;
                     
             }
+            
         }
 
-        if (chatMessage.Message.ToLower().LastIndexOf("!meow") > -1 && nowCommand != lastCommand)
+        if (chatMessage.Message.ToLower().LastIndexOf("!meow") > -1 && nowCommand != lastCommand && !timerForChatСommands.TimerOn)
         {
             CatVoiceManager.catVoiceManager.CatMeows();
+            timerForChatСommands.StartTimer(5);
+            nowCommand = lastCommand;
         }
     }
-    private void ReadyToStart()                     // Стартовая позиция перед всеми действиями
+    private void ReadyToStart()                     // Перемещение кота в стартовую позицию ( начальную, перед всеми действиями )
     {
+        timerForChatСommands.StartTimer(5);
         catReady = false;
-        Debug.Log("Go in ready!");
         cat.SetActive(true);
         catsHome.SetBool("isHome", false);
-        CatLetsGo(new Vector3(5.3f, -2f, 0), 2.7f);
+        CatLetsGo(new Vector3(5.3f, -2f, 0), catSpeed);
         cat.GetComponent<SpriteRenderer>().flipX = true;
-        cat.transform.position = Vector3.MoveTowards (_startPos, _endPos, Time.deltaTime*2.5f);
         if (_startPos == _endPos)
         {
             cat.GetComponent<SpriteRenderer>().flipX = false;

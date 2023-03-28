@@ -641,8 +641,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170c03df7284ec4479547f09b476571d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerObject: {fileID: 1568773503}
   chatMessage: {fileID: 1670109256}
   cat: {fileID: 258827159}
+  catSpeed: 2.75
   tvAnim: {fileID: 1502290618}
   catsAnim: {fileID: 258827160}
   catsHome: {fileID: 1230856553}
@@ -1067,7 +1069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 266.8, y: -141.91284}
+  m_AnchoredPosition: {x: 271.5, y: 165.8}
   m_SizeDelta: {x: 56.07, y: 56.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1568773505
@@ -1082,9 +1084,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae0dba00b0922f44299f55e87c2ca072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 20
+  time: 5
   timerImage: {fileID: 1568773506}
   timerText: {fileID: 725472991}
+  timeLeft: 0
 --- !u!114 &1568773506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,7 +1095,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568773503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1220,6 +1223,7 @@ MonoBehaviour:
   password: oauth:9ol3owc20u0457vf3vd4lxd4zma7yr
   channelName: twitexe
   chatMessage: {fileID: 1670109256}
+  timerObject: {fileID: 1568773503}
 --- !u!4 &1949231818
 Transform:
   m_ObjectHideFlags: 0

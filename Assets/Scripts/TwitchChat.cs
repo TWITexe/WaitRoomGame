@@ -30,6 +30,10 @@ public class TwitchChat : MonoBehaviour, IConnectChat
 
     // Полученные данные | Объект класса ChatMessage для управления данными подписчика в чате
     [SerializeField] VariableStorage chatMessage;
+    
+    // Таймер для считывания сообщений
+    [SerializeField] private GameObject timerObject;
+    private TimerForChatСommands timerForChatСommands;
    
     
 
@@ -37,6 +41,7 @@ public class TwitchChat : MonoBehaviour, IConnectChat
 
     void Start()
     {
+        timerForChatСommands = timerObject.GetComponent<TimerForChatСommands>();
         reconnectAfter = 60.0f;
         Connect();
     }
@@ -87,36 +92,37 @@ public class TwitchChat : MonoBehaviour, IConnectChat
         writer.WriteLine("JOIN #" + channelName);
         writer.Flush();
         
-        print("Connect");
     }
 
     private void ReadChat()
     {
-        print("InReadChat");
         if (twitchClient.Available > 0)
         {
-            // Получаем сообщение от подписчика сверху
-            chatMessage.Message = reader.ReadLine();                                
-            // Проверяем, написано ли сообщение пользователем ( PRIVMSG ).
-            if ( chatMessage.Message.Contains("PRIVMSG"))                           
+            if (!timerForChatСommands.TimerOn)
             {
-                // Получаем никнейм пользователя, написавшего сообщение
-                int splitPoint = chatMessage.Message.IndexOf("!", 1);
-                chatMessage.ChatName = chatMessage.Message.Substring(0, splitPoint);
-                chatMessage.ChatName = chatMessage.ChatName.Substring(1);
-
-                // Получаем текст сообщения 
-                splitPoint = chatMessage.Message.IndexOf(":", 1);
-                chatMessage.Message = chatMessage.Message.Substring(splitPoint + 1);
-
-                messageCounter++;
-                print(messageCounter);
-                
-                if (messageCounter >= 5)
+                // Получаем сообщение от подписчика сверху
+                chatMessage.Message = reader.ReadLine();
+                // Проверяем, написано ли сообщение пользователем ( PRIVMSG ).
+                if (chatMessage.Message.Contains("PRIVMSG"))
                 {
-                    textNickname.text = chatMessage.ChatName;
-                    textMessage.text = "➤" + chatMessage.Message;
-                    messageCounter = 0;
+                    // Получаем никнейм пользователя, написавшего сообщение
+                    int splitPoint = chatMessage.Message.IndexOf("!", 1);
+                    chatMessage.ChatName = chatMessage.Message.Substring(0, splitPoint);
+                    chatMessage.ChatName = chatMessage.ChatName.Substring(1);
+
+                    // Получаем текст сообщения 
+                    splitPoint = chatMessage.Message.IndexOf(":", 1);
+                    chatMessage.Message = chatMessage.Message.Substring(splitPoint + 1);
+
+                    messageCounter++;
+                    print(messageCounter);
+
+                    if (messageCounter >= 5)
+                    {
+                        textNickname.text = chatMessage.ChatName;
+                        textMessage.text = "➤" + chatMessage.Message;
+                        messageCounter = 0;
+                    }
                 }
             }
         }
