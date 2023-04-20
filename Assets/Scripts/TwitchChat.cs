@@ -4,7 +4,6 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class TwitchChat : MonoBehaviour, IConnectChat
 {
     // Клиент твича для дальнейшей работы
@@ -15,8 +14,7 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     public Text textNickname;
     public Text textMessage;
     // Имя пользователя, чей oauth будет использоваться    
-    public string username;                                 
-    
+    public string username;
     // Oauth ключ с источника: twitchapps.com/tmi
     public string password;                                 
     // Ник человека на Twitch, с которого будет браться информация о чате.
@@ -48,7 +46,6 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     
     void Update()
     {
-        
         try
         {
             // Проверяем Connect
@@ -115,14 +112,13 @@ public class TwitchChat : MonoBehaviour, IConnectChat
                     chatMessage.Message = chatMessage.Message.Substring(splitPoint + 1);
 
                     messageCounter++;
-                    print(messageCounter);
-
-                    if (messageCounter >= 5)
+                    //print(messageCounter);
+                    /*if (messageCounter >= 5)
                     {
                         textNickname.text = chatMessage.ChatName;
                         textMessage.text = "➤" + chatMessage.Message;
                         messageCounter = 0;
-                    }
+                    }*/
                 }
             }
         }

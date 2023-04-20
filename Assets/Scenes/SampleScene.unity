@@ -603,7 +603,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 
 --- !u!222 &725472992
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   textNickname: {fileID: 0}
   textMessage: {fileID: 0}
   username: twitexe
-  password: oauth:9ol3owc20u0457vf3vd4lxd4zma7yr
+  password: oauth:88k8dy466j6ljhi3kpayhf54w0jy0f
   channelName: twitexe
   chatMessage: {fileID: 1670109256}
   timerObject: {fileID: 1568773503}

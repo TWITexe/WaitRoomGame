@@ -9,7 +9,10 @@ public class CatController : MonoBehaviour
     // Главный герой
     [SerializeField] private GameObject cat;
     [SerializeField] private float catSpeed;
+    // Готовность героя к передвижению к новой точке.
     private bool catReady = true;
+    // Готовность к "мяу". Один "мяу" можно использовать только между действиями.
+    private bool meowReady = true;
     // Аниматор TV
     [SerializeField] private Animator tvAnim;
     // Аниматор кота
@@ -36,12 +39,23 @@ public class CatController : MonoBehaviour
     private void Update()
     {
         // Смотрим новую команду из чата на движение кота, запомним её, чтобы постоянно не выполнять действие одной и той же команды.
-        if ((lastCommand != nowCommand) && chatMessage.Message.ToLower().LastIndexOf("!cat") > -1)
+        if ((lastCommand != nowCommand) && (chatMessage.Message.ToLower().LastIndexOf("!cat") > -1))
         {
             lastCommand = chatMessage.Message.ToLower();
+            meowReady = true;
         }
-        Debug.Log("message = " + chatMessage.Message);
-        Debug.Log("name = " + chatMessage.ChatName);
+        //Debug.Log("message = " + chatMessage.Message);
+        //Debug.Log("name = " + chatMessage.ChatName);
+        Debug.Log("CatReady = " + catReady + "| timerOn = " + timerForChatСommands.TimerOn + "| MeowReady =" + meowReady);
+        
+        if (chatMessage.Message.ToLower().LastIndexOf("!meow") > -1 && !timerForChatСommands.TimerOn && meowReady )
+        {
+            nowCommand = chatMessage.Message.ToLower();
+            print("meow meow");
+            timerForChatСommands.StartTimer(5);
+            CatVoiceManager.catVoiceManager.CatMeows();
+            meowReady = false;
+        }
         // Если есть "!tv" в чате, проверяет дальше, если нет, не проходится по остальным if'ам
         if (chatMessage.Message.ToLower().LastIndexOf("!tv") > -1 && !timerForChatСommands.TimerOn && catReady)               
         {
@@ -68,8 +82,7 @@ public class CatController : MonoBehaviour
                     break;
             }
         }
-
-        if (chatMessage.Message.ToLower().LastIndexOf("!cat") > -1)
+        else if (chatMessage.Message.ToLower().LastIndexOf("!cat") > -1)
         {
             // Записываем новую команду на движенние кота, чтобы при следующем тике сравнить её с предыдущей
             nowCommand = chatMessage.Message.ToLower();
@@ -95,7 +108,6 @@ public class CatController : MonoBehaviour
                     break;
                 
                 case "!catchair":
-                    // Проверка на готовность кота к следующему действию, ( а так же, проверка не стоИт ли кот уже на нужной команде точке ).
                     if (_startPos != _endPos && catReady)
                     {
                         CatLetsGo(new Vector3(3f, -1.3f, 0), catSpeed);
@@ -115,13 +127,7 @@ public class CatController : MonoBehaviour
             }
             
         }
-
-        if (chatMessage.Message.ToLower().LastIndexOf("!meow") > -1 && nowCommand != lastCommand && !timerForChatСommands.TimerOn)
-        {
-            CatVoiceManager.catVoiceManager.CatMeows();
-            timerForChatСommands.StartTimer(5);
-            nowCommand = lastCommand;
-        }
+        
     }
     private void ReadyToStart()                     // Перемещение кота в стартовую позицию ( начальную, перед всеми действиями )
     {
