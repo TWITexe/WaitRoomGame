@@ -110,15 +110,14 @@ public class TwitchChat : MonoBehaviour, IConnectChat
                     // Получаем текст сообщения 
                     splitPoint = chatMessage.Message.IndexOf(":", 1);
                     chatMessage.Message = chatMessage.Message.Substring(splitPoint + 1);
-
+                    
                     messageCounter++;
-                    //print(messageCounter);
-                    /*if (messageCounter >= 5)
+                    if (messageCounter >= 5)
                     {
                         textNickname.text = chatMessage.ChatName;
                         textMessage.text = "➤" + chatMessage.Message;
                         messageCounter = 0;
-                    }*/
+                    }
                 }
             }
         }

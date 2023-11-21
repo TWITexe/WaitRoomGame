@@ -4,15 +4,17 @@ public class CatController : MonoBehaviour
 {
     [SerializeField] private GameObject timerObject;
     //[SerializeField] private GameObject eventManager;
-    // Скрипт банка сообщений в чате
+    // Скрипт банка сообщений в чате для отслеживания команд
     [SerializeField] private VariableStorage chatMessage;
     // Главный герой
     [SerializeField] private GameObject cat;
     [SerializeField] private float catSpeed;
     // Готовность героя к передвижению к новой точке.
     private bool catReady = true;
-    // Готовность к "мяу". Один "мяу" можно использовать только между действиями.
+    // Готовность к "мяу". p.s.Один "мяу" можно использовать только между действиями.
     private bool meowReady = true;
+    // Экземпляр класса для работы со звуками кота))0)
+    [SerializeField] private CatVoiceManager catVoiceManager;
     // Аниматор TV
     [SerializeField] private Animator tvAnim;
     // Аниматор кота
@@ -24,63 +26,48 @@ public class CatController : MonoBehaviour
     private Vector3 _endPos;                                                       
     // Кошачий дом
     [SerializeField] private Animator catsHome;  
-    // Прошлая и текущая команды.
+    // Прошлая и текущая команды для отслеживания повторений.
     private string lastCommand;
     private string nowCommand = "start";
-    // создаём экземпляр класса таймер.
+    // Экземпляр класса таймер.
     private TimerForChatСommands timerForChatСommands;
+   
 
     private void Start()
     {
         timerForChatСommands = timerObject.GetComponent<TimerForChatСommands>();
         _startPos = _defaultStartPos;
+        ReadyToStart();
     }
 
     private void Update()
     {
         // Смотрим новую команду из чата на движение кота, запомним её, чтобы постоянно не выполнять действие одной и той же команды.
-        if ((lastCommand != nowCommand) && (chatMessage.Message.ToLower().LastIndexOf("!cat") > -1))
+        Debug.Log("LastCommand = " + lastCommand);
+        if ((lastCommand != nowCommand) && chatMessage.Message.ToLower().LastIndexOf("!cat") > -1)
         {
+            if (!meowReady)
+                meowReady = !meowReady;
             lastCommand = chatMessage.Message.ToLower();
-            meowReady = true;
+            
         }
         //Debug.Log("message = " + chatMessage.Message);
         //Debug.Log("name = " + chatMessage.ChatName);
         Debug.Log("CatReady = " + catReady + "| timerOn = " + timerForChatСommands.TimerOn + "| MeowReady =" + meowReady);
         
-        if (chatMessage.Message.ToLower().LastIndexOf("!meow") > -1 && !timerForChatСommands.TimerOn && meowReady )
+        if (chatMessage.Message.ToLower().LastIndexOf("!meow") > -1 && !timerForChatСommands.TimerOn && meowReady && catReady)
         {
             nowCommand = chatMessage.Message.ToLower();
             print("meow meow");
             timerForChatСommands.StartTimer(5);
-            CatVoiceManager.catVoiceManager.CatMeows();
+            catVoiceManager.CatMeows();
             meowReady = false;
         }
         // Если есть "!tv" в чате, проверяет дальше, если нет, не проходится по остальным if'ам
-        if (chatMessage.Message.ToLower().LastIndexOf("!tv") > -1 && !timerForChatСommands.TimerOn && catReady)               
+        else if(chatMessage.Message.ToLower().LastIndexOf("!tv") > -1 && !timerForChatСommands.TimerOn && catReady)               
         {
             nowCommand = chatMessage.Message.ToLower();
-            switch (chatMessage.Message.ToLower())
-            {
-                case "!tv1":
-                    tvAnim.Play("tv_news");
-                    break;
-                case "!tv2":
-                    tvAnim.Play("tv_heart");
-                    break;
-                case "!tv3":
-                    tvAnim.Play("tv_18");
-                    break;
-                case "!tv4":
-                    tvAnim.Play("tv_twit");
-                    break;
-                case "!tv5":
-                    tvAnim.Play("tv_frog");
-                    break;
-                case "!tvoff":
-                    tvAnim.Play("tv_off");
-                    break;
-            }
+            SwitchTVChannel(nowCommand);
         }
         else if (chatMessage.Message.ToLower().LastIndexOf("!cat") > -1)
         {
@@ -129,7 +116,8 @@ public class CatController : MonoBehaviour
         }
         
     }
-    private void ReadyToStart()                     // Перемещение кота в стартовую позицию ( начальную, перед всеми действиями )
+    // Перемещение кота в стартовую позицию ( начальную, перед всеми действиями )
+    private void ReadyToStart()                     
     {
         timerForChatСommands.StartTimer(5);
         catReady = false;
@@ -152,6 +140,31 @@ public class CatController : MonoBehaviour
         _endPos = endPos;
         catsAnim.SetBool("isJump", true);
         cat.transform.position = Vector3.MoveTowards(_startPos, _endPos, Time.deltaTime * speed);
+    }
+
+    private void SwitchTVChannel(string _nowCommand)
+    {
+        switch (_nowCommand)
+        {
+            case "!tv1":
+                tvAnim.Play("tv_news");
+                break;
+            case "!tv2":
+                tvAnim.Play("tv_heart");
+                break;
+            case "!tv3":
+                tvAnim.Play("tv_18");
+                break;
+            case "!tv4":
+                tvAnim.Play("tv_twit");
+                break;
+            case "!tv5":
+                tvAnim.Play("tv_frog");
+                break;
+            case "!tvoff":
+                tvAnim.Play("tv_off");
+                break;
+        }
     }
     
 }
