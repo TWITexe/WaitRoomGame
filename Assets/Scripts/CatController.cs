@@ -45,35 +45,35 @@ public class CatController : MonoBehaviour
         Debug.Log("LastCommand = " + lastCommand);
         Debug.Log("nowCommand = " + nowCommand);
         
-        if ((lastCommand != nowCommand) && chatMessage.Message.ToLower().LastIndexOf("!cat") > -1)
+        if ((lastCommand != nowCommand) && VariableStorage.Message.ToLower().LastIndexOf("!cat") > -1)
         {
             _endPos = new Vector3(0, 0, 0);
             RefreshMeow(meowReady);
-            lastCommand = chatMessage.Message.ToLower();
+            lastCommand = VariableStorage.Message.ToLower();
             
         }
         //Debug.Log("message = " + chatMessage.Message);
         //Debug.Log("name = " + chatMessage.ChatName);
         Debug.Log("CatReady = " + catReady + "| timerOn = " + timerForChatСommands.TimerOn + "| MeowReady =" + meowReady);
         
-        if (chatMessage.Message.ToLower().LastIndexOf("!meow") > -1 && !timerForChatСommands.TimerOn && meowReady && catReady)
+        if (VariableStorage.Message.ToLower().LastIndexOf("!meow") > -1 && !timerForChatСommands.TimerOn && meowReady && catReady)
         {
-            nowCommand = chatMessage.Message.ToLower();
+            nowCommand = VariableStorage.Message.ToLower();
             print("meow meow");
             timerForChatСommands.StartTimer(5);
             catVoiceManager.CatMeows();
             meowReady = false;
         }
         // Если есть "!tv" в чате, проверяет дальше, если нет, не проходится по остальным if'ам
-        else if(chatMessage.Message.ToLower().LastIndexOf("!tv") > -1 && !timerForChatСommands.TimerOn && catReady)               
+        else if(VariableStorage.Message.ToLower().LastIndexOf("!tv") > -1 && !timerForChatСommands.TimerOn && catReady)               
         {
-            nowCommand = chatMessage.Message.ToLower();
+            nowCommand = VariableStorage.Message.ToLower();
             SwitchTVChannel(nowCommand);
         }
-        else if (chatMessage.Message.ToLower().LastIndexOf("!cat") > -1)
+        else if (VariableStorage.Message.ToLower().LastIndexOf("!cat") > -1)
         {
             // Записываем новую команду на движенние кота, чтобы при следующем тике сравнить её с предыдущей
-            nowCommand = chatMessage.Message.ToLower();
+            nowCommand = VariableStorage.Message.ToLower();
             CatCommandsForTowardsTheTarget(nowCommand);
             
         }

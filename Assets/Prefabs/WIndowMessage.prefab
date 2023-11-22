@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2426645985418238482}
   - component: {fileID: 2426645985418238481}
+  - component: {fileID: 5287085578801240627}
   m_Layer: 0
   m_Name: WIndowMessage
   m_TagString: Untagged
@@ -104,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2426645985418238480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.54, y: 0.63, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.556145, y: 2.556145, z: 2.556145}
   m_Children:
   - {fileID: 2426645986040066858}
@@ -162,6 +163,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5287085578801240627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426645985418238480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438692b683a98b642ad3b574a58b1d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
+  target: {fileID: 0}
+  speedMove: 0
+  time: 0
+  freq: 30
+  waveScale: 1
 --- !u!1 &2426645986021019748
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,11 +24,8 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     private float reconnectTimer;                           
     private float reconnectAfter;
     // Счётчик пришедших сообщений
-    private int messageCounter = 0;                         
+    private int messageCounter = 0;
 
-    // Полученные данные | Объект класса ChatMessage для управления данными подписчика в чате
-    [SerializeField] VariableStorage chatMessage;
-    
     // Таймер для считывания сообщений
     [SerializeField] private GameObject timerObject;
     private TimerForChatСommands timerForChatСommands;
@@ -79,8 +76,7 @@ public class TwitchChat : MonoBehaviour, IConnectChat
         // Заполняем данные для подключения
         // Создаём для передачи инфы Twitch'у reader и writer
         reader = new StreamReader(twitchClient.GetStream());                       
-        writer = new StreamWriter(twitchClient.GetStream());                       
-        
+        writer = new StreamWriter(twitchClient.GetStream());
         // Передаём данные Twitch'у 
         writer.WriteLine("PASS " + password);
         writer.WriteLine("NICK " + username);
@@ -98,24 +94,24 @@ public class TwitchChat : MonoBehaviour, IConnectChat
             if (!timerForChatСommands.TimerOn)
             {
                 // Получаем сообщение от подписчика сверху
-                chatMessage.Message = reader.ReadLine();
+                VariableStorage.Message = reader.ReadLine();
                 // Проверяем, написано ли сообщение пользователем ( PRIVMSG ).
-                if (chatMessage.Message.Contains("PRIVMSG"))
+                if (VariableStorage.Message.Contains("PRIVMSG"))
                 {
                     // Получаем никнейм пользователя, написавшего сообщение
-                    int splitPoint = chatMessage.Message.IndexOf("!", 1);
-                    chatMessage.ChatName = chatMessage.Message.Substring(0, splitPoint);
-                    chatMessage.ChatName = chatMessage.ChatName.Substring(1);
+                    int splitPoint = VariableStorage.Message.IndexOf("!", 1);
+                    VariableStorage.ChatName = VariableStorage.Message.Substring(0, splitPoint);
+                    VariableStorage.ChatName = VariableStorage.ChatName.Substring(1);
 
                     // Получаем текст сообщения 
-                    splitPoint = chatMessage.Message.IndexOf(":", 1);
-                    chatMessage.Message = chatMessage.Message.Substring(splitPoint + 1);
+                    splitPoint = VariableStorage.Message.IndexOf(":", 1);
+                    VariableStorage.Message = VariableStorage.Message.Substring(splitPoint + 1);
                     
                     messageCounter++;
                     if (messageCounter >= 5)
                     {
-                        textNickname.text = chatMessage.ChatName;
-                        textMessage.text = "➤" + chatMessage.Message;
+                        textNickname.text = VariableStorage.ChatName;
+                        textMessage.text = "➤" + VariableStorage.Message;
                         messageCounter = 0;
                     }
                 }

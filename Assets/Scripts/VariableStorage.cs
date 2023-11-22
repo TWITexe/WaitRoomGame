@@ -3,7 +3,7 @@ using UnityEngine;
 public class VariableStorage : MonoBehaviour
 {
     // Получаем ник подписчика чата
-    public string ChatName { get; set; } = "-"; 
+    public static string ChatName = "Default nickname"; 
     // Получаем сообщение от подписчика сверху
-    public string Message { get; set; } = "-";   
+    public static string  Message = "Default message";   
 }
