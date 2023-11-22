@@ -7,13 +7,15 @@ public class CloudMessageMoving : MonoBehaviour
 {
     private Vector2 spawnPoint = new Vector2(-14f,3f);
     private Vector2 target = new Vector2(14f,3f);
+    [Range(0.0f, 1f)] 
+    [SerializeField] private float time = 0;
     [Range(0.1f, 10f)] 
     [SerializeField] private float speedMove;
-    [SerializeField] private float time = 0;
     // частота волны
     [SerializeField] private float freq = 30f; 
     // размер волны
     [SerializeField] private float waveScale = 1f; 
+    
 
     private void Update()
     {
@@ -22,10 +24,8 @@ public class CloudMessageMoving : MonoBehaviour
         //Реализации перемещения объекта по "волне".
         Vector2 res = WaveLerp(spawnPoint, target, time, waveScale, freq);
         transform.position = res;
-        // Удаление вконце пути
-        if (transform.position.x >=11)
-            Destroy(this.gameObject);
- 
+
+
     }
     // Метод для создания волны, подобной графику y = sin(x) - т.е синусойда
     private Vector2 WaveLerp(Vector2 a, Vector2 b, float time, float waveScale = 1f, float freq = 1f)
@@ -38,6 +38,11 @@ public class CloudMessageMoving : MonoBehaviour
         result = Vector2.LerpUnclamped(result, leftNormal, Mathf.Sin(time * freq));
  
         return result;
+    }
+
+    public void StartMessage()
+    {
+        time = 0;
     }
     
 }

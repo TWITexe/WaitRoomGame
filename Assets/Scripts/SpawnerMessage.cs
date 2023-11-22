@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class SpawnerMessage : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    [SerializeField] private GameObject cloudMessage;
+    [SerializeField] private Transform spawnPoint;
+    
 }

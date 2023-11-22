@@ -55,11 +55,11 @@
      <Compile Include="Assets\Scripts\IConnectChat.cs" />
      <Compile Include="Assets\Scripts\TwitchChat.cs" />
      <Compile Include="Assets\Scripts\VariableStorage.cs" />
+     <Compile Include="Assets\Scripts\CloudMessageMoving.cs" />
      <Compile Include="Assets\Scripts\CatVoiceManager.cs" />
      <Compile Include="Assets\Scripts\CatController.cs" />
-     <Compile Include="Assets\Scripts\TimerForChatСommands.cs" />
-     <Compile Include="Assets\Scripts\CloudMessageMoving.cs" />
      <Compile Include="Assets\Scripts\SpawnerMessage.cs" />
+     <Compile Include="Assets\Scripts\TimerForChatСommands.cs" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Programms/UnityProject/2020.3.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

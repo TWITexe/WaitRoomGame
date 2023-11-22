@@ -29,6 +29,9 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     // Таймер для считывания сообщений
     [SerializeField] private GameObject timerObject;
     private TimerForChatСommands timerForChatСommands;
+    
+    // Выводим сообщение на экран
+    [SerializeField]private CloudMessageMoving cloudMessageMoving = new CloudMessageMoving();
    
     
 
@@ -113,6 +116,7 @@ public class TwitchChat : MonoBehaviour, IConnectChat
                         textNickname.text = VariableStorage.ChatName;
                         textMessage.text = "➤" + VariableStorage.Message;
                         messageCounter = 0;
+                        cloudMessageMoving.StartMessage();
                     }
                 }
             }
