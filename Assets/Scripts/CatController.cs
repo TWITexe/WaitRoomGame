@@ -41,25 +41,12 @@ public class CatController : MonoBehaviour
 
     private void Update()
     {
-        // Смотрим новую команду из чата на движение кота, запомним её, чтобы постоянно не выполнять действие одной и той же команды.
-        Debug.Log("LastCommand = " + lastCommand);
-        Debug.Log("nowCommand = " + nowCommand);
         
-        if ((lastCommand != nowCommand) && VariableStorage.Message.ToLower().LastIndexOf("!cat") > -1)
-        {
-            _endPos = new Vector3(0, 0, 0);
-            RefreshMeow(meowReady);
-            lastCommand = VariableStorage.Message.ToLower();
-            
-        }
-        //Debug.Log("message = " + chatMessage.Message);
-        //Debug.Log("name = " + chatMessage.ChatName);
+        
         Debug.Log("CatReady = " + catReady + "| timerOn = " + timerForChatСommands.TimerOn + "| MeowReady =" + meowReady);
-        
         if (VariableStorage.Message.ToLower().LastIndexOf("!meow") > -1 && !timerForChatСommands.TimerOn && meowReady && catReady)
         {
             nowCommand = VariableStorage.Message.ToLower();
-            print("meow meow");
             timerForChatСommands.StartTimer(5);
             catVoiceManager.CatMeows();
             meowReady = false;
@@ -75,13 +62,16 @@ public class CatController : MonoBehaviour
             // Записываем новую команду на движенние кота, чтобы при следующем тике сравнить её с предыдущей
             nowCommand = VariableStorage.Message.ToLower();
             CatCommandsForTowardsTheTarget(nowCommand);
-            
         }
-        
+
+        // Смотрим новую команду из чата на движение кота, запомним её, чтобы постоянно не выполнять действие одной и той же команды.
+        ComparisonLatestAndNewCommand();
+
     }
     // Перемещение кота в стартовую позицию ( начальную, перед всеми действиями передвижения)
     private void ReadyToStart()                     
     {
+        Debug.Log("Starting");
         timerForChatСommands.StartTimer(5);
         catReady = false;
         cat.SetActive(true);
@@ -109,11 +99,12 @@ public class CatController : MonoBehaviour
     private void CatCommandsForTowardsTheTarget(string _nowCommand)
     {
         Debug.Log("Now CatMoveCommand = " + nowCommand);
+        //Debug.Log(_startPos + " != " + _endPos);
         switch (_nowCommand)
         {
             case "!cathome":
-                
-                
+                Debug.Log("LastCommand = " + lastCommand);
+                Debug.Log("nowCommand = " + nowCommand);
                 if (_startPos != _endPos && catReady)
                 {
                     CatLetsGo(new Vector3(-1.48f, -1.71f, 0), catSpeed);
@@ -122,16 +113,18 @@ public class CatController : MonoBehaviour
                         catsAnim.SetBool("isJump", false);
                         catsHome.SetBool("isHome", true);
                         cat.SetActive(false);
+                        
                     }
                 }
-                else if (nowCommand != lastCommand || !catReady ) // Если сработала другая команда и кот не готов к ней, то ставим кота в готовность.
+                else if ( nowCommand != lastCommand || !catReady ) // Если сработала другая команда и кот не готов к ней, то ставим кота в готовность.
                 {
                     ReadyToStart();
                 }
                 break;
                 
             case "!catchair":
-                
+                Debug.Log("LastCommand = " + lastCommand);
+                Debug.Log("nowCommand = " + nowCommand);
                 if (_startPos != _endPos && catReady)
                 {
                     CatLetsGo(new Vector3(3f, -1.3f, 0), catSpeed);
@@ -141,14 +134,14 @@ public class CatController : MonoBehaviour
                         catsAnim.SetBool("isChair", true);
                     }
                 }
-                if (nowCommand != lastCommand || !catReady)
+                else if ( nowCommand != lastCommand || !catReady)
                 {
                     ReadyToStart();
                 }
-                
                 break;
                     
         }
+        
     }
 
     private void SwitchTVChannel(string _nowCommand)
@@ -182,6 +175,16 @@ public class CatController : MonoBehaviour
             meowReady = !_meowReady;
     }
 
-    
-    
+    private void ComparisonLatestAndNewCommand()
+    {
+        // сравнение команд и запись последней в "lastCommand".
+        if ((lastCommand != nowCommand) && VariableStorage.Message.ToLower().LastIndexOf("!cat") > -1)
+        {
+            RefreshMeow(meowReady);
+            lastCommand = VariableStorage.Message.ToLower();
+            
+        }
+    }
+
+
 }

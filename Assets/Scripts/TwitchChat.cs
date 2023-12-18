@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,8 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     
     // Выводим сообщение на экран
     [SerializeField]private CloudMessageMoving cloudMessageMoving = new CloudMessageMoving();
+    // Список строк которые стоит пропустить и не выводить на экран
+    private string[] skipArray = new[] {"!tv", "!cat", "!meow", "!rps", "!q"};
    
     
 
@@ -78,7 +81,7 @@ public class TwitchChat : MonoBehaviour, IConnectChat
         twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);                  
         // Заполняем данные для подключения
         // Создаём для передачи инфы Twitch'у reader и writer
-        reader = new StreamReader(twitchClient.GetStream());                       
+        reader = new StreamReader(twitchClient.GetStream());                        
         writer = new StreamWriter(twitchClient.GetStream());
         // Передаём данные Twitch'у 
         writer.WriteLine("PASS " + password);
@@ -111,7 +114,10 @@ public class TwitchChat : MonoBehaviour, IConnectChat
                     VariableStorage.Message = VariableStorage.Message.Substring(splitPoint + 1);
                     
                     messageCounter++;
-                    if (messageCounter >= 5)
+                    // Проверяем сообщение на наличие слов, которые не стоит выводить на экран ( в нашем случае - команды)
+                    string stringMatch = skipArray.FirstOrDefault(VariableStorage.Message.Contains);
+                    if (messageCounter >= 5 && (cloudMessageMoving.CloudTime >= 1 || cloudMessageMoving.CloudTime == 0) 
+                                            && stringMatch == null)
                     {
                         textNickname.text = VariableStorage.ChatName;
                         textMessage.text = "➤" + VariableStorage.Message;

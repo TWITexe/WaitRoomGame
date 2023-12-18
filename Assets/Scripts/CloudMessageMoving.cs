@@ -8,21 +8,27 @@ public class CloudMessageMoving : MonoBehaviour
     private Vector2 spawnPoint = new Vector2(-14f,3f);
     private Vector2 target = new Vector2(14f,3f);
     [Range(0.0f, 1f)] 
-    [SerializeField] private float time = 0;
+    [SerializeField] private float cloudTime = 0;
     [Range(0.1f, 10f)] 
     [SerializeField] private float speedMove;
     // частота волны
     [SerializeField] private float freq = 30f; 
     // размер волны
-    [SerializeField] private float waveScale = 1f; 
-    
+    [SerializeField] private float waveScale = 1f;
 
+    public float CloudTime
+    {
+        get
+        {
+            return cloudTime;
+        }
+    }
     private void Update()
     {
-        time += (Time.deltaTime / 10) * speedMove;
+        cloudTime += (Time.deltaTime / 10) * speedMove;
         if (spawnPoint == null || target == null) return;
         //Реализации перемещения объекта по "волне".
-        Vector2 res = WaveLerp(spawnPoint, target, time, waveScale, freq);
+        Vector2 res = WaveLerp(spawnPoint, target, cloudTime, waveScale, freq);
         transform.position = res;
 
 
@@ -42,7 +48,7 @@ public class CloudMessageMoving : MonoBehaviour
 
     public void StartMessage()
     {
-        time = 0;
+        cloudTime = 0;
     }
     
 }
