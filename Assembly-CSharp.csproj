@@ -53,13 +53,36 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\IConnectChat.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\PKCE\PKCE_AuthConfig.cs" />
+     <Compile Include="Assets\Spotify4Unity\Dependencies\UnitySingleton\SceneSingleton.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\Spotify App\Prefabs\SinglePlaylistSelectableTrack.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\Client Credentials\ClientCredentials_AuthConfig.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\Spotify App\Prefabs\SingleNavPlaylistController.cs" />
      <Compile Include="Assets\Scripts\TwitchChat.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\AuthorizationConfig.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\Landing Scene\ArtistWidgetController.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\LoadingSpinner.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\Spotify App\Prefabs\SingleSearchTrackController.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\Landing Scene\PlaylistWidgetController.cs" />
      <Compile Include="Assets\Scripts\VariableStorage.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\PKCE\PKCE_Authentification.cs" />
      <Compile Include="Assets\Scripts\CloudMessageMoving.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\Landing Scene\AccountStatusController.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\Landing Scene\SinglePlaylistController.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\Services\SpotifyService.cs" />
      <Compile Include="Assets\Scripts\CatVoiceManager.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\Client Credentials\ClientCredentials_Authentification.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\Landing Scene\UserWidgetController.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\IServiceAuthenticator.cs" />
      <Compile Include="Assets\Scripts\CatController.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\SpotifyPlayerListener.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\Examples\Scripts\Spotify App\SpotifyPlayerController.cs" />
+     <Compile Include="Assets\Spotify4Unity\Unity\SpotifyServiceListener.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\S4UUtility.cs" />
      <Compile Include="Assets\Scripts\SpawnerMessage.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\Implicit Grant\ImplicitGrant_AuthConfig.cs" />
      <Compile Include="Assets\Scripts\TimerForChatСommands.cs" />
+     <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\Implicit Grant\ImplicitGrant_Authentification.cs" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Programms/UnityProject/2020.3.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -282,8 +305,20 @@
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>D:/Programms/UnityProject/2020.3.16f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
  </Reference>
+ <Reference Include="Swan.Lite">
+ <HintPath>D:/Programms/Unity/WaitForTwitch_TWITexe/Assets/Spotify4Unity/Unity/Plugins/Swan.Lite.dll</HintPath>
+ </Reference>
+ <Reference Include="SpotifyAPI.Web.Auth">
+ <HintPath>D:/Programms/Unity/WaitForTwitch_TWITexe/Assets/Spotify4Unity/Unity/Plugins/SpotifyAPI.Web.Auth.dll</HintPath>
+ </Reference>
+ <Reference Include="EmbedIO">
+ <HintPath>D:/Programms/Unity/WaitForTwitch_TWITexe/Assets/Spotify4Unity/Unity/Plugins/EmbedIO.dll</HintPath>
+ </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>D:/Programms/Unity/WaitForTwitch_TWITexe/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="SpotifyAPI.Web">
+ <HintPath>D:/Programms/Unity/WaitForTwitch_TWITexe/Assets/Spotify4Unity/Unity/Plugins/SpotifyAPI.Web.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>D:/Programms/UnityProject/2020.3.16f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
