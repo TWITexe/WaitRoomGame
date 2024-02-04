@@ -83,6 +83,8 @@
      <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\Implicit Grant\ImplicitGrant_AuthConfig.cs" />
      <Compile Include="Assets\Scripts\TimerForChatСommands.cs" />
      <Compile Include="Assets\Spotify4Unity\Core\Managed Authentification\Implicit Grant\ImplicitGrant_Authentification.cs" />
+     <Compile Include="Assets\Scripts\MoveAnswerText.cs" />
+     <None Include="Assets\Pixel Font - Tripfive\_README.txt" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Programms/UnityProject/2020.3.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

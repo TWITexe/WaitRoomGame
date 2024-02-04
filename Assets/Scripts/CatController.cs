@@ -139,7 +139,25 @@ public class CatController : MonoBehaviour
                     ReadyToStart();
                 }
                 break;
-                    
+            // Переделать через if (_nowCommand.Contains("!catq"))
+            case "!catq":
+                if (_startPos != _endPos && catReady)
+                {
+                    CatLetsGo(new Vector3(5.3f, -2.05f, 0), catSpeed);
+                    if (_startPos == _endPos)
+                    {
+                        nowCommand = VariableStorage.Message.ToLower();
+                        timerForChatСommands.StartTimer(5);
+                        catVoiceManager.CatQuestionMeow();
+                        catsAnim.SetBool("isJump", false);
+                        catsAnim.SetBool("isChair", true);
+                    }
+                }
+                else if ( nowCommand != lastCommand || !catReady)
+                {
+                    ReadyToStart();
+                }
+                break;
         }
         
     }

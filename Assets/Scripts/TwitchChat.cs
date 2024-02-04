@@ -34,7 +34,7 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     // Выводим сообщение на экран
     [SerializeField]private CloudMessageMoving cloudMessageMoving = new CloudMessageMoving();
     // Список строк которые стоит пропустить и не выводить на экран
-    private string[] skipArray = new[] {"!tv", "!cat", "!meow", "!rps", "!q"};
+    private string[] skipArray = new[] {"!tv", "!cat", "!meow", "!rps", "!catq"};
    
     
 
