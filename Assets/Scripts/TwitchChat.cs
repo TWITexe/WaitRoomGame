@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TwitchChat : MonoBehaviour, IConnectChat
 {
@@ -12,8 +13,8 @@ public class TwitchChat : MonoBehaviour, IConnectChat
     private StreamReader reader;                                    
     private StreamWriter writer;
     
-    public Text textNickname;
-    public Text textMessage;
+    public TMP_Text textNickname;
+    public TMP_Text textMessage;
     // Имя пользователя, чей oauth будет использоваться    
     public string username;
     // Oauth ключ с источника: twitchapps.com/tmi
@@ -120,7 +121,7 @@ public class TwitchChat : MonoBehaviour, IConnectChat
                                             && stringMatch == null)
                     {
                         textNickname.text = VariableStorage.ChatName;
-                        textMessage.text = "➤" + VariableStorage.Message;
+                        textMessage.text = "> " + VariableStorage.Message;
                         messageCounter = 0;
                         cloudMessageMoving.StartMessage();
                     }

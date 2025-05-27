@@ -12,9 +12,9 @@ using UnityEngine.UI;
 public class AccountStatusController : SpotifyServiceListener
 {
     public bool ServiceAuthOnStart = false;
-    
+
     [SerializeField]
-    private Button _signInButton, _signOutButton;
+    private Button _signInButton;
 
     private void Start()
     {
@@ -24,15 +24,10 @@ public class AccountStatusController : SpotifyServiceListener
         {
             _signInButton.onClick.AddListener(() => this.OnSignIn());
         }
-        if (_signOutButton != null)
-        {
-            _signOutButton.onClick.AddListener(() => this.OnSignOut());
-        }
-
+        
         if (!ServiceAuthOnStart)
         {
             _signInButton.gameObject.SetActive(true);
-            _signOutButton.gameObject.SetActive(false);
         }
     }
 
@@ -65,6 +60,5 @@ public class AccountStatusController : SpotifyServiceListener
 
         bool isConnected = client != null;
         _signInButton.gameObject.SetActive(!isConnected);
-        _signOutButton.gameObject.SetActive(isConnected);
     }
 }

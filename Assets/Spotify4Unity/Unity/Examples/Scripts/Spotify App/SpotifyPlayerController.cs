@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
+using TMPro;
 
 /// <summary>
 /// Spotify Player Controller script. Script to emulate the bottom player bar in Spotify
@@ -14,8 +15,7 @@ public class SpotifyPlayerController : SpotifyPlayerListener
     [SerializeField]
     private Image _trackIcon;
     // Current track name & artist text
-    [SerializeField]
-    private Text _trackName, _artistsNames;
+    [SerializeField] private TMP_Text _trackName, _artistsNames;
     // Button to add/remove track to user's library
     
     // Player middle track progress left & right text
