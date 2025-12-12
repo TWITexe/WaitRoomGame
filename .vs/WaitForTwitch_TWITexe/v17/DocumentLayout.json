@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|d:\\programms\\unity\\waitfortwitch_twitexe\\assets\\scripts\\catcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\catcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|d:\\programms\\unity\\waitfortwitch_twitexe\\assets\\scripts\\twitchchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\twitchchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\assets\\spotify4unity\\core\\managed authentification\\client credentials\\clientcredentials_authentification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|solutionrelative:assets\\spotify4unity\\core\\managed authentification\\client credentials\\clientcredentials_authentification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\assets\\spotify4unity\\unity\\examples\\scripts\\spotify app\\spotifyplayercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|solutionrelative:assets\\spotify4unity\\unity\\examples\\scripts\\spotify app\\spotifyplayercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\assets\\spotify4unity\\core\\managed authentification\\pkce\\pkce_authconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|solutionrelative:assets\\spotify4unity\\core\\managed authentification\\pkce\\pkce_authconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\assets\\spotify4unity\\core\\services\\spotifyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC7718C6-A2E4-2A47-146A-86FBA7221699}|Assembly-CSharp.csproj|solutionrelative:assets\\spotify4unity\\core\\services\\spotifyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CatController.cs",
+              "DocumentMoniker": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Scripts\\CatController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CatController.cs",
+              "ToolTip": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Scripts\\CatController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CatController.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAwwLQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T20:43:33.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TwitchChat.cs",
+              "DocumentMoniker": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Scripts\\TwitchChat.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TwitchChat.cs",
+              "ToolTip": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Scripts\\TwitchChat.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TwitchChat.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAkwCUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T20:30:18.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SpotifyPlayerController.cs",
+              "DocumentMoniker": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Spotify4Unity\\Unity\\Examples\\Scripts\\Spotify App\\SpotifyPlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Spotify4Unity\\Unity\\Examples\\Scripts\\Spotify App\\SpotifyPlayerController.cs",
+              "ToolTip": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Spotify4Unity\\Unity\\Examples\\Scripts\\Spotify App\\SpotifyPlayerController.cs",
+              "RelativeToolTip": "Assets\\Spotify4Unity\\Unity\\Examples\\Scripts\\Spotify App\\SpotifyPlayerController.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAkwBEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T16:27:47.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ClientCredentials_Authentification.cs",
+              "DocumentMoniker": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Spotify4Unity\\Core\\Managed Authentification\\Client Credentials\\ClientCredentials_Authentification.cs",
+              "RelativeDocumentMoniker": "Assets\\Spotify4Unity\\Core\\Managed Authentification\\Client Credentials\\ClientCredentials_Authentification.cs",
+              "ToolTip": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Spotify4Unity\\Core\\Managed Authentification\\Client Credentials\\ClientCredentials_Authentification.cs",
+              "RelativeToolTip": "Assets\\Spotify4Unity\\Core\\Managed Authentification\\Client Credentials\\ClientCredentials_Authentification.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAkwCIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T20:30:14.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PKCE_AuthConfig.cs",
+              "DocumentMoniker": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Spotify4Unity\\Core\\Managed Authentification\\PKCE\\PKCE_AuthConfig.cs",
+              "RelativeDocumentMoniker": "Assets\\Spotify4Unity\\Core\\Managed Authentification\\PKCE\\PKCE_AuthConfig.cs",
+              "ToolTip": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Spotify4Unity\\Core\\Managed Authentification\\PKCE\\PKCE_AuthConfig.cs",
+              "RelativeToolTip": "Assets\\Spotify4Unity\\Core\\Managed Authentification\\PKCE\\PKCE_AuthConfig.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCUAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T19:58:00.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SpotifyService.cs",
+              "DocumentMoniker": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Spotify4Unity\\Core\\Services\\SpotifyService.cs",
+              "RelativeDocumentMoniker": "Assets\\Spotify4Unity\\Core\\Services\\SpotifyService.cs",
+              "ToolTip": "D:\\Programms\\Unity\\WaitForTwitch_TWITexe\\Assets\\Spotify4Unity\\Core\\Services\\SpotifyService.cs",
+              "RelativeToolTip": "Assets\\Spotify4Unity\\Core\\Services\\SpotifyService.cs",
+              "ViewState": "AgIAAFYBAAAAAAAAAAAAANEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T13:08:24.27Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
