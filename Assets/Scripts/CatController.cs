@@ -139,25 +139,25 @@ public class CatController : MonoBehaviour
                     ReadyToStart();
                 }
                 break;
-            // Переделать через if (_nowCommand.Contains("!catq"))
-            case "!catq":
-                if (_startPos != _endPos && catReady)
+        }
+        if (_nowCommand.Contains("!catq"))
+        {
+            if (_startPos != _endPos && catReady)
+            {
+                CatLetsGo(new Vector3(5.3f, -2.05f, 0), catSpeed);
+                if (_startPos == _endPos)
                 {
-                    CatLetsGo(new Vector3(5.3f, -2.05f, 0), catSpeed);
-                    if (_startPos == _endPos)
-                    {
-                        nowCommand = VariableStorage.Message.ToLower();
-                        timerForChatСommands.StartTimer(5);
-                        catVoiceManager.CatQuestionMeow();
-                        catsAnim.SetBool("isJump", false);
-                        catsAnim.SetBool("isChair", true);
-                    }
+                    nowCommand = VariableStorage.Message.ToLower();
+                    timerForChatСommands.StartTimer(5);
+                    catVoiceManager.CatQuestionMeow();
+                    catsAnim.SetBool("isJump", false);
+                    catsAnim.SetBool("isChair", true);
                 }
-                else if ( nowCommand != lastCommand || !catReady)
-                {
-                    ReadyToStart();
-                }
-                break;
+            }
+            else if ( nowCommand != lastCommand || !catReady)
+            {
+                ReadyToStart();
+            }
         }
         
     }
@@ -166,19 +166,19 @@ public class CatController : MonoBehaviour
     {
         switch (_nowCommand)
         {
-            case "!tv1":
+            case "!tv 1":
                 tvAnim.Play("tv_news");
                 break;
-            case "!tv2":
+            case "!tv 2":
                 tvAnim.Play("tv_heart");
                 break;
-            case "!tv3":
+            case "!tv 3":
                 tvAnim.Play("tv_18");
                 break;
-            case "!tv4":
+            case "!tv 4":
                 tvAnim.Play("tv_twit");
                 break;
-            case "!tv5":
+            case "!tv 5":
                 tvAnim.Play("tv_frog");
                 break;
             case "!tvoff":
