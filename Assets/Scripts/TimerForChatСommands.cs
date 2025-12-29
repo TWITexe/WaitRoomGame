@@ -1,12 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TimerForChatСommands : MonoBehaviour
 {
     [SerializeField] private float time;
     [SerializeField] private Image timerImage;
-    [SerializeField] private Text timerText;
+    [SerializeField] private TMP_Text timerText;
     public bool TimerOn { get; set; } = false;         // Работает ли сейчас таймер
     public float timeLeft = 0f;                        // Время таймера
     private IEnumerator CoroutineForTimer()
